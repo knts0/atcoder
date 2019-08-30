@@ -2,16 +2,12 @@
 #include<algorithm>
 using namespace std;
 
-// result: https://atcoder.jp/contests/abc120/submissions/7170539
+// result: https://atcoder.jp/contests/abc123/submissions/7199451
 
 int main() {
-  string S;
-  cin >> S;
-  int red = 0;
-  int blue = 0;
-  for (int i = 0; i < S.length(); i++) {
-    if (S[i] == '0') red += 1;
-    else blue += 1;
-  }
-  cout << min(red, blue) * 2 << endl;
+  long long n, a, b, c, d, e;
+  cin >> n >> a >> b >> c >> d >> e;
+  long long min_trans = min(a, min(b, min(c, min(d, e))));
+  if (min_trans < n) cout << (n - 1) / min_trans + 5  << endl;
+  else cout << 5 << endl;
 }

@@ -1,5 +1,9 @@
 #include<iostream>
+#include<cmath>
+#include<algorithm>
 using namespace std;
+
+// result: https://atcoder.jp/contests/abc119/submissions/7198728
 
 int main() {
   int N, A, B, C;
@@ -34,8 +38,8 @@ int main() {
     }
 
     if (lengthA != 0 && lengthB != 0 && lengthC != 0) {
-      int mps = math.abs(A - lengthA) + (cntA - 1) * 10 + math.abs(B - lengthB) + (cntB - 1) * 10 + math.abs(C - lengthC) + (cntC - 1) * 10
-      ans = math.min(mps, ans)
+      int mps = abs(A - lengthA) + (cntA - 1) * 10 +  abs(B - lengthB) + (cntB - 1) * 10 +  abs(C - lengthC) + (cntC - 1) * 10;
+      ans = min(mps, ans);
     }
   }
   cout << ans << endl;

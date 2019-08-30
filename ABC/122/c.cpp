@@ -2,7 +2,7 @@
 #include<algorithm>
 using namespace std;
 
-// result: https://atcoder.jp/contests/abc120/submissions/7170539
+// result: https://atcoder.jp/contests/abc122/submissions/7199003
 
 int main() {
   string S;
