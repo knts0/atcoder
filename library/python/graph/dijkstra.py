@@ -7,8 +7,8 @@ g = [[] for _ in range(n)]
 
 for i in range(m):
     a, b, w = map(int, input().split())
-    g[a - 1].append((b - 1, w))
-    g[b - 1].append((a - 1, w))
+    g[a - 1].append({ 'to': b - 1, 'weight': w })
+    g[b - 1].append({ 'to': a - 1, 'weight': w })
 
 INF = 10 ** 9
 dist = [INF] * n  # 最短距離
@@ -19,19 +19,15 @@ def dijkstra(s):
     heapq.heapify(q)
 
     dist[s] = 0
-    heapq.heappush((0, s))
+    heapq.heappush({ 'd': 0, 'v': s })
 
     while len(q) > 0:
         p = heapq.heappop(q)
-        v = p[1]
 
-        if dist[v] < p[0]:
+        if dist[p.v] < p.d:
             continue
 
-        for next_p in g[v]:
-            next_v = next_p[0]
-            e = next_p[1]
-
-            if dist[next_v] > dist[v] + e:
-                dist[next_v] = dist[v] + e
-                heapq.heappush((dist[next_v], next_v))
+        for next_p in g[p.v]:
+            if dist[next_p.v] > dist[p.v] + next_p.w:
+                dist[next_p.v] = dist[p.v] + next_p.w
+                heapq.heappush((dist[next_p.v], next_p.v))
